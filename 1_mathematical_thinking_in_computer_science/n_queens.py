@@ -7,16 +7,18 @@
 import itertools
 
 # 1. Brute-force search
+# Time complexity: O(n^2) (n == length of perm)
 def is_solution(perm: tuple) -> bool:
     for i1, i2 in itertools.combinations(range(len(perm)), 2):
         if abs(i1 - i2) == abs(perm[i1] - perm[i2]):
             return False
     return True
 
+# Time complexity: O(n^2 * n!)
 def brute_force_search(n: int) -> list:
     solutions = list()
-    for perm in itertools.permutations(range(n)):
-        if is_solution(perm):
+    for perm in itertools.permutations(range(n)): # O(n!)
+        if is_solution(perm): # O(n^2)
             solutions.append(perm)
     return solutions
 
