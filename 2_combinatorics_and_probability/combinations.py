@@ -15,7 +15,23 @@ def comb_by_pascal(n: int, k: int) -> int:
         c[(i, i)] = 1
     return c[(n, k)]
 
+def c(n: int, k: int) -> int:
+    p = 1
+    k_fac = 1
+    for i in range(k):
+        p *= n - i
+        k_fac *= k - i
+    return int(p / k_fac)
+
+def binomial_coefficients(a: int, b: int, n: int) -> list:
+    coefs = list()
+    for i in range(n + 1):
+        coef = c(n, i) * a**(n - i) * b**(i)
+        coefs.append(coef)
+    return coefs
+
 if __name__ == "__main__":
-    n = 4000
-    k = 3
-    print(comb_by_pascal(n, k))
+    a, b, n = 3, -2, 7
+    coefs = binomial_coefficients(a, b, n)
+    for coef in coefs:
+        print(coef, end=',')
