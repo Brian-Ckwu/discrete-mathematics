@@ -1,5 +1,6 @@
 from tqdm import tqdm
 import itertools
+import math
 
 def demo_comb() -> None:
     for c in itertools.combinations("abcde", 2):
@@ -31,7 +32,4 @@ def binomial_coefficients(a: int, b: int, n: int) -> list:
     return coefs
 
 if __name__ == "__main__":
-    a, b, n = 3, -2, 7
-    coefs = binomial_coefficients(a, b, n)
-    for coef in coefs:
-        print(coef, end=',')
+    print(c(6, 3) * (5**3)**2)
