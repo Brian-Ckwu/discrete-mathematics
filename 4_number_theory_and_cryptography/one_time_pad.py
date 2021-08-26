@@ -21,3 +21,16 @@ def xor(s1, s2):
         res += format(int(s1[i], 16) ^ int(s2[i], 16), '01x')
     return res
 
+if __name__ == "__main__":
+    # test functions
+    print("to_hex(\"Hello World\") = \"%s\"" % to_hex("Hello World"))
+    print("to_str(\"736f6d65206d657373616765\") = \"%s\"" % to_str("736f6d65206d657373616765"))
+    # test recovering message
+    message = "secret message"
+    key     = "my secret keys"
+    print("hex(message) = %s" % to_hex(message))
+    print("hex(key) = %s" % to_hex(key))
+    ciphertext = xor(to_hex(message), to_hex(key))
+    print("ciphertext: %s" % ciphertext)
+    recovered_message = to_str(xor(ciphertext, to_hex(key)))
+    print("recovered message: %s" % recovered_message)
